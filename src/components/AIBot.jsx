@@ -18,7 +18,7 @@ const AIBot = () => {
     try {
       const hf = new HuggingFace();
       const result = await hf.analyze({
-        model: "swing-trading-model",
+        model: "distilbert-base-uncased",
         strategies: strategies
       });
       setAnalysis(result);
@@ -31,7 +31,7 @@ const AIBot = () => {
 
   return (
     <Box p={4}>
-      <Heading mb={4}>AI Bot Project Analysis</Heading>
+      <Heading mb={4}>AI Bot Analysis</Heading>
       <Text mb={4}>Use the AI bot to analyze projects for swing trading potential.</Text>
       <Button onClick={analyzeProjects} colorScheme="teal" mb={4}>
         Analyze Projects
