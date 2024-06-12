@@ -40,6 +40,9 @@ const Navbar = () => {
           <Link as={RouterLink} to="/about" {...linkStyles}>
             About
           </Link>
+          <Link as={RouterLink} to="/settings" {...linkStyles}>
+            Settings
+          </Link>
           <Button onClick={toggleColorMode} ml={4} colorScheme="teal">
             {colorMode === "light" ? <FaMoon /> : <FaSun />}
           </Button>
