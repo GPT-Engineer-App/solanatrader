@@ -16,34 +16,28 @@ const RealTime = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    // Simulate data fetching
-    setTimeout(() => {
-      // Simulate an error
-      const fetchData = Math.random() > 0.5;
-      if (fetchData) {
-        setData("Real-time data goes here.");
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.example.com/realtime-data');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setData(result);
         setLoading(false);
-      } else {
-        setError("Failed to fetch real-time data. Please try again later.");
+      } catch (error) {
+        setError(error.message);
         setLoading(false);
       }
-    }, 2000);
+    };
+
+    fetchData();
   }, []);
 
   const handleRetry = () => {
     setLoading(true);
     setError(null);
-    // Retry fetching data
-    setTimeout(() => {
-      const fetchData = Math.random() > 0.5;
-      if (fetchData) {
-        setData("Real-time data goes here.");
-        setLoading(false);
-      } else {
-        setError("Failed to fetch real-time data. Please try again later.");
-        setLoading(false);
-      }
-    }, 2000);
+    fetchData();
   };
 
   return (
@@ -67,7 +61,7 @@ const RealTime = () => {
             </Button>
           </VStack>
         ) : (
-          <Text>{data}</Text>
+          <Text>{JSON.stringify(data)}</Text>
         )}
       </Box>
     </ErrorBoundary>
