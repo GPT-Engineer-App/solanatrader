@@ -1,4 +1,4 @@
-import { HuggingFace } from 'huggingface';
+import { HuggingFace } from '@huggingface/inference';
 
 const hf = new HuggingFace('YOUR_HUGGING_FACE_API_KEY');
 
