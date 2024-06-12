@@ -1,4 +1,4 @@
-import { Box, Heading, Text, FormControl, FormLabel, Input, Button, VStack } from "@chakra-ui/react";
+import { Box, Heading, Text, FormControl, FormLabel, Input, Button, VStack, Alert, AlertIcon } from "@chakra-ui/react";
 import { useState } from "react";
 
 const Parameters = () => {
@@ -6,6 +6,7 @@ const Parameters = () => {
     param1: "",
     param2: "",
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -14,8 +15,13 @@ const Parameters = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Parameters submitted:", parameters);
+    // Simulate form submission
+    if (parameters.param1 === "" || parameters.param2 === "") {
+      setError("All parameters are required.");
+    } else {
+      setError(null);
+      console.log("Parameters submitted:", parameters);
+    }
   };
 
   return (
@@ -23,6 +29,12 @@ const Parameters = () => {
       <Heading mb={4}>Trading Parameters</Heading>
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
+          {error && (
+            <Alert status="error">
+              <AlertIcon />
+              {error}
+            </Alert>
+          )}
           <FormControl id="param1">
             <FormLabel>Parameter 1</FormLabel>
             <Input name="param1" value={parameters.param1} onChange={handleChange} />
