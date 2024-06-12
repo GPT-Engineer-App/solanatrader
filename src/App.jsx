@@ -17,7 +17,7 @@ function App() {
         <Route exact path="/parameters" element={<Parameters />} />
         <Route exact path="/realtime" element={<RealTime />} />
         <Route exact path="/about" element={<About />} />
-      <Route exact path="/ai-bot" element={<AIBot />} />
+        <Route exact path="/ai-bot" element={<AIBot />} />
       </Routes>
     </Router>
   );
