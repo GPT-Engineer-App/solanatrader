@@ -7,6 +7,7 @@ const Parameters = () => {
     param2: "",
   });
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,7 +19,9 @@ const Parameters = () => {
     // Simulate form submission
     if (parameters.param1 === "" || parameters.param2 === "") {
       setError("All parameters are required.");
+    setSuccess(null);
     } else {
+      setSuccess("Parameters saved successfully!");
       setError(null);
       console.log("Parameters submitted:", parameters);
     }
@@ -33,6 +36,12 @@ const Parameters = () => {
             <Alert status="error">
               <AlertIcon />
               {error}
+            </Alert>
+          )}
+          {success && (
+            <Alert status="success">
+              <AlertIcon />
+              {success}
             </Alert>
           )}
           <FormControl id="param1">

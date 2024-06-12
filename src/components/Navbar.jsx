@@ -1,7 +1,11 @@
-import { Box, Flex, Link, Spacer, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Link, Spacer, Text, Image, Button } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { useColorMode } from "@chakra-ui/react";
+import { FaSun, FaMoon } from "react-icons/fa";
 
 const Navbar = () => {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box bg="teal.500" px={4} py={2} w="100%" maxW="1200px" mx="auto">
       <Flex align="center" wrap="wrap">
@@ -23,6 +27,9 @@ const Navbar = () => {
           <Link as={RouterLink} to="/realtime" color="white" mx={2} _hover={{ textDecoration: "underline", color: "teal.200" }}>
             Real-Time Data
           </Link>
+          <Button onClick={toggleColorMode} ml={4} colorScheme="teal">
+            {colorMode === "light" ? <FaMoon /> : <FaSun />}
+          </Button>
         </Flex>
       </Flex>
     </Box>
