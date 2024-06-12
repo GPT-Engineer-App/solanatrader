@@ -1,6 +1,6 @@
-import { HuggingFace } from '@huggingface/inference';
+import { InferenceClient } from '@huggingface/inference';
 
-const hf = new HuggingFace('YOUR_HUGGING_FACE_API_KEY');
+const hf = new InferenceClient({ apiKey: 'YOUR_HUGGING_FACE_API_KEY' });
 
 export const analyzeProjects = async () => {
   const response = await hf.textGeneration({
