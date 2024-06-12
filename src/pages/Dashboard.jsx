@@ -1,5 +1,14 @@
 import { Box, Heading, Text, Spinner, VStack, Alert, AlertIcon, Button } from "@chakra-ui/react";
+import { ErrorBoundary } from 'react-error-boundary';
 import { useState, useEffect } from "react";
+
+const ErrorFallback = ({ error, resetErrorBoundary }) => (
+  <Box role="alert">
+    <Text>Something went wrong:</Text>
+    <Text>{error.message}</Text>
+    <Button onClick={resetErrorBoundary}>Try again</Button>
+  </Box>
+);
 
 const Dashboard = () => {
   const [loading, setLoading] = useState(true);
@@ -38,28 +47,30 @@ const Dashboard = () => {
   };
 
   return (
-    <Box p={4}>
-      <Heading mb={4}>Dashboard</Heading>
-      <Text mb={4}>View and manage your trades on the Solana blockchain.</Text>
-      {loading ? (
-        <VStack spacing={4}>
-          <Spinner size="xl" thickness="4px" speed="0.65s" color="teal.500" />
-          <Text>Loading your trades...</Text>
-        </VStack>
-      ) : error ? (
-        <VStack spacing={4}>
-          <Alert status="error" variant="left-accent">
-            <AlertIcon />
-            {error}
-          </Alert>
-          <Button onClick={handleRetry} colorScheme="teal" variant="solid">
-            Retry
-          </Button>
-        </VStack>
-      ) : (
-        <Text>{data}</Text>
-      )}
-    </Box>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Box p={4}>
+        <Heading mb={4}>Dashboard</Heading>
+        <Text mb={4}>View and manage your trades on the Solana blockchain.</Text>
+        {loading ? (
+          <VStack spacing={4}>
+            <Spinner size="xl" thickness="4px" speed="0.65s" color="teal.500" />
+            <Text>Loading your trades...</Text>
+          </VStack>
+        ) : error ? (
+          <VStack spacing={4}>
+            <Alert status="error" variant="left-accent">
+              <AlertIcon />
+              {error}
+            </Alert>
+            <Button onClick={handleRetry} colorScheme="teal" variant="solid">
+              Retry
+            </Button>
+          </VStack>
+        ) : (
+          <Text>{data}</Text>
+        )}
+      </Box>
+    </ErrorBoundary>
   );
 };
 
