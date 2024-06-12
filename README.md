@@ -1,6 +1,6 @@
 # solana-meme-trader
 
-create me a full stack trading bot for solana meme coins 
+create me a full stack trading bot for solana meme coins
 
 ## Collaborate with GPT Engineer
 
