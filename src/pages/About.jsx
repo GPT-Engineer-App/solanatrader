@@ -1,4 +1,4 @@
-import { Box, Heading, Text, VStack, Image } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack, Image, Button } from "@chakra-ui/react";
 import { ErrorBoundary } from 'react-error-boundary';
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
