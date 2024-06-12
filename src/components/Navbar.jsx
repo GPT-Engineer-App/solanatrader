@@ -1,4 +1,5 @@
 import { Box, Flex, Link, Spacer, Text, Image, Button } from "@chakra-ui/react";
+import About from "../pages/About.jsx";
 import { Link as RouterLink } from "react-router-dom";
 import { useColorMode } from "@chakra-ui/react";
 import { FaSun, FaMoon } from "react-icons/fa";
@@ -28,6 +29,9 @@ const Navbar = () => {
             Parameters
           </Link>
           <Link as={RouterLink} to="/realtime" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
+            Real-Time Data
+          </Link>
+          <Link as={RouterLink} to="/about" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
             Real-Time Data
           </Link>
           <Button onClick={toggleColorMode} ml={4} colorScheme="teal">
