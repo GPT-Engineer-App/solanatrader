@@ -1,6 +1,7 @@
 import { Box, Heading, Text, Spinner, VStack, Alert, AlertIcon, Button } from "@chakra-ui/react";
 import { ErrorBoundary } from 'react-error-boundary';
 import { useState, useEffect } from "react";
+import { analyzeProjects, loadAdvancedStrategies } from "../services/aiBotService";
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
   <Box role="alert">
@@ -14,36 +15,42 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
+  const [strategies, setStrategies] = useState([]);
 
   useEffect(() => {
-    // Simulate data fetching
-    setTimeout(() => {
-      // Simulate an error
-      const fetchData = Math.random() > 0.5;
-      if (fetchData) {
-        setData("Your trade data goes here.");
+    const getData = async () => {
+      try {
+        const projectData = await analyzeProjects();
+        const strategyData = await loadAdvancedStrategies();
+        setData(projectData);
+        setStrategies(strategyData);
         setLoading(false);
-      } else {
+      } catch (err) {
         setError("Failed to fetch data. Please try again later.");
         setLoading(false);
       }
-    }, 2000);
+    };
+
+    getData();
   }, []);
 
   const handleRetry = () => {
     setLoading(true);
     setError(null);
-    // Retry fetching data
-    setTimeout(() => {
-      const fetchData = Math.random() > 0.5;
-      if (fetchData) {
-        setData("Your trade data goes here.");
+    const getData = async () => {
+      try {
+        const projectData = await analyzeProjects();
+        const strategyData = await loadAdvancedStrategies();
+        setData(projectData);
+        setStrategies(strategyData);
         setLoading(false);
-      } else {
+      } catch (err) {
         setError("Failed to fetch data. Please try again later.");
         setLoading(false);
       }
-    }, 2000);
+    };
+
+    getData();
   };
 
   return (
@@ -67,7 +74,13 @@ const Dashboard = () => {
             </Button>
           </VStack>
         ) : (
-          <Text>{data}</Text>
+          <VStack spacing={4}>
+            <Text>{data}</Text>
+            <Heading size="md">Advanced Strategies</Heading>
+            {strategies.map((strategy, index) => (
+              <Text key={index}>{strategy}</Text>
+            ))}
+          </VStack>
         )}
       </Box>
     </ErrorBoundary>
