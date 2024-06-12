@@ -7,6 +7,12 @@ import { FaSun, FaMoon } from "react-icons/fa";
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const linkStyles = {
+    color: "white",
+    mx: 3,
+    _hover: { textDecoration: "none", color: "teal.300" }
+  };
+
   return (
     <Box bg="teal.500" px={4} py={2} w="100%" maxW="1200px" mx="auto">
       <Flex align="center" wrap="wrap">
@@ -19,20 +25,20 @@ const Navbar = () => {
         </Text>
         <Spacer />
         <Flex>
-          <Link as={RouterLink} to="/" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
+          <Link as={RouterLink} to="/" {...linkStyles}>
             Home
           </Link>
-          <Link as={RouterLink} to="/dashboard" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
+          <Link as={RouterLink} to="/dashboard" {...linkStyles}>
             Dashboard
           </Link>
-          <Link as={RouterLink} to="/parameters" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
+          <Link as={RouterLink} to="/parameters" {...linkStyles}>
             Parameters
           </Link>
-          <Link as={RouterLink} to="/realtime" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
+          <Link as={RouterLink} to="/realtime" {...linkStyles}>
             Real-Time Data
           </Link>
-          <Link as={RouterLink} to="/about" color="white" mx={3} _hover={{ textDecoration: "none", color: "teal.300" }}>
-            Real-Time Data
+          <Link as={RouterLink} to="/about" {...linkStyles}>
+            About
           </Link>
           <Button onClick={toggleColorMode} ml={4} colorScheme="teal">
             {colorMode === "light" ? <FaMoon /> : <FaSun />}
