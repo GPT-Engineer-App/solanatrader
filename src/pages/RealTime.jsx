@@ -1,6 +1,7 @@
 import { Box, Heading, Text, Spinner, VStack, Alert, AlertIcon, Button } from "@chakra-ui/react";
 import { ErrorBoundary } from 'react-error-boundary';
 import { useState, useEffect } from "react";
+import { fetchRealTimeData } from "../services/realTimeDataService";
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
   <Box role="alert">
@@ -16,34 +17,35 @@ const RealTime = () => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    // Simulate data fetching
-    setTimeout(() => {
-      // Simulate an error
-      const fetchData = Math.random() > 0.5;
-      if (fetchData) {
-        setData("Real-time data goes here.");
+    const getData = async () => {
+      try {
+        const realTimeData = await fetchRealTimeData();
+        setData(realTimeData);
         setLoading(false);
-      } else {
+      } catch (err) {
         setError("Failed to fetch real-time data. Please try again later.");
         setLoading(false);
       }
-    }, 2000);
+    };
+
+    getData();
   }, []);
 
   const handleRetry = () => {
     setLoading(true);
     setError(null);
-    // Retry fetching data
-    setTimeout(() => {
-      const fetchData = Math.random() > 0.5;
-      if (fetchData) {
-        setData("Real-time data goes here.");
+    const getData = async () => {
+      try {
+        const realTimeData = await fetchRealTimeData();
+        setData(realTimeData);
         setLoading(false);
-      } else {
+      } catch (err) {
         setError("Failed to fetch real-time data. Please try again later.");
         setLoading(false);
       }
-    }, 2000);
+    };
+
+    getData();
   };
 
   return (
