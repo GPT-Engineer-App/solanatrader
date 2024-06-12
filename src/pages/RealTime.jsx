@@ -17,6 +17,7 @@ const RealTime = () => {
   const [data, setData] = useState(null);
 
   const { ws, setupWebSocket, closeWebSocket } = useWebSocket({
+    url: 'wss://api.mainnet-beta.solana.com/', // WebSocket URL
     onOpen: () => {
       console.log('WebSocket connection established');
       ws.send('subscribe'); // Send a subscribe message to the server
