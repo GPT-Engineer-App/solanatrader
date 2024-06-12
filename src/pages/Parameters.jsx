@@ -19,7 +19,7 @@ const Parameters = () => {
     // Simulate form submission
     if (parameters.param1 === "" || parameters.param2 === "") {
       setError("All parameters are required.");
-    setSuccess(null);
+      setSuccess(null);
     } else {
       setSuccess("Parameters saved successfully!");
       setError(null);
@@ -30,6 +30,7 @@ const Parameters = () => {
   return (
     <Box p={4}>
       <Heading mb={4}>Trading Parameters</Heading>
+      <Text mb={4}>Set your trading parameters for the Solana meme coin trading bot.</Text>
       <form onSubmit={handleSubmit}>
         <VStack spacing={4}>
           {error && (

@@ -40,14 +40,15 @@ const RealTime = () => {
   return (
     <Box p={4}>
       <Heading mb={4}>Real-Time Data</Heading>
+      <Text mb={4}>Monitor real-time data for your trades on the Solana blockchain.</Text>
       {loading ? (
         <VStack spacing={4}>
-          <Spinner size="xl" />
+          <Spinner size="xl" thickness="4px" speed="0.65s" color="teal.500" />
           <Text>Loading real-time data...</Text>
         </VStack>
       ) : error ? (
         <VStack spacing={4}>
-          <Alert status="error">
+          <Alert status="error" borderRadius="md" boxShadow="md">
             <AlertIcon />
             {error}
           </Alert>
