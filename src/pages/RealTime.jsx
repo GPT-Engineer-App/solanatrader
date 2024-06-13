@@ -1,7 +1,11 @@
 import { Box, Heading, Text, Spinner, VStack, Alert, AlertIcon, Button } from "@chakra-ui/react";
 import { ErrorBoundary } from 'react-error-boundary';
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
 import { useWebSocket } from "../hooks/useWebSocket";
+=======
+import { fetchRealTimeData } from "../services/realTimeDataService";
+>>>>>>> 5ed110b345cdaf264c30a9fd76d32ef202985ecd
 
 const ErrorFallback = ({ error, resetErrorBoundary }) => (
   <Box role="alert">
@@ -40,6 +44,7 @@ const RealTime = () => {
   });
 
   useEffect(() => {
+<<<<<<< HEAD
     setupWebSocket();
     return () => {
       if (ws && ws.readyState === WebSocket.OPEN) {
@@ -47,13 +52,43 @@ const RealTime = () => {
       }
     };
   }, [ws, setupWebSocket, closeWebSocket]);
+=======
+    const getData = async () => {
+      try {
+        const realTimeData = await fetchRealTimeData();
+        setData(realTimeData);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch real-time data. Please try again later.");
+        setLoading(false);
+      }
+    };
+
+    getData();
+  }, []);
+>>>>>>> 5ed110b345cdaf264c30a9fd76d32ef202985ecd
 
   const handleRetry = () => {
     setLoading(true);
     setError(null);
+<<<<<<< HEAD
     setData(null);
     closeWebSocket();
     setupWebSocket();
+=======
+    const getData = async () => {
+      try {
+        const realTimeData = await fetchRealTimeData();
+        setData(realTimeData);
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch real-time data. Please try again later.");
+        setLoading(false);
+      }
+    };
+
+    getData();
+>>>>>>> 5ed110b345cdaf264c30a9fd76d32ef202985ecd
   };
 
   return (
