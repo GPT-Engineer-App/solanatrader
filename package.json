@@ -1,8 +1,9 @@
 {
-    "name": "vite-project",
+    "name": "solana-meme-coin-trading-bot",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "type": "module",
+    "main": "src/main.jsx",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -23,11 +24,17 @@
         "@chakra-ui/react": "^2.8.2",
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
+        "@huggingface/inference": "^2.7.0",
         "framer-motion": "^10.16.15",
+        "nodemailer": "^6.9.13",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-error-boundary": "^3.1.4",
         "react-icons": "^4.12.0",
-        "react-router-dom": "^6.20.1"
+        "react-router-dom": "^6.20.1",
+        "twilio": "^5.1.1",
+        "unfetch": "^4.2.0",
+        "ws": "^8.17.0"
     },
     "prettier": {
         "printWidth": 99999999
