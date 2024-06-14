@@ -16,7 +16,10 @@ const Parameters = () => {
     param2: "",
   });
   const [error, setError] = useState(null);
+<<<<<<< HEAD
+=======
   const [success, setSuccess] = useState(null);
+>>>>>>> main
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,15 +31,45 @@ const Parameters = () => {
     // Simulate form submission
     if (parameters.param1 === "" || parameters.param2 === "") {
       setError("All parameters are required.");
+<<<<<<< HEAD
+    } else {
+=======
       setSuccess(null);
     } else {
       setSuccess("Parameters saved successfully!");
+>>>>>>> main
       setError(null);
       console.log("Parameters submitted:", parameters);
     }
   };
 
   return (
+<<<<<<< HEAD
+    <Box p={4}>
+      <Heading mb={4}>Trading Parameters</Heading>
+      <form onSubmit={handleSubmit}>
+        <VStack spacing={4}>
+          {error && (
+            <Alert status="error">
+              <AlertIcon />
+              {error}
+            </Alert>
+          )}
+          <FormControl id="param1">
+            <FormLabel>Parameter 1</FormLabel>
+            <Input name="param1" value={parameters.param1} onChange={handleChange} />
+          </FormControl>
+          <FormControl id="param2">
+            <FormLabel>Parameter 2</FormLabel>
+            <Input name="param2" value={parameters.param2} onChange={handleChange} />
+          </FormControl>
+          <Button type="submit" colorScheme="teal" size="lg">
+            Save Parameters
+          </Button>
+        </VStack>
+      </form>
+    </Box>
+=======
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Box p={4}>
         <Heading mb={4}>Trading Parameters</Heading>
@@ -70,6 +103,7 @@ const Parameters = () => {
         </form>
       </Box>
     </ErrorBoundary>
+>>>>>>> main
   );
 };
 

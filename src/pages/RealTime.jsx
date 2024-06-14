@@ -1,5 +1,9 @@
+<<<<<<< HEAD
+import { Box, Heading, Text, Spinner, VStack, Alert, AlertIcon } from "@chakra-ui/react";
+=======
 import { Box, Heading, Text, Spinner, VStack, Alert, AlertIcon, Button } from "@chakra-ui/react";
 import { ErrorBoundary } from 'react-error-boundary';
+>>>>>>> main
 import { useState, useEffect } from "react";
 <<<<<<< HEAD
 import { useWebSocket } from "../hooks/useWebSocket";
@@ -18,6 +22,21 @@ const ErrorFallback = ({ error, resetErrorBoundary }) => (
 const RealTime = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+<<<<<<< HEAD
+
+  useEffect(() => {
+    // Simulate data fetching
+    setTimeout(() => {
+      // Simulate an error
+      const fetchData = Math.random() > 0.5;
+      if (fetchData) {
+        setLoading(false);
+      } else {
+        setError("Failed to fetch real-time data. Please try again later.");
+        setLoading(false);
+      }
+    }, 2000);
+=======
   const [data, setData] = useState(null);
 
   const { ws, setupWebSocket, closeWebSocket } = useWebSocket({
@@ -65,6 +84,7 @@ const RealTime = () => {
     };
 
     getData();
+>>>>>>> main
   }, []);
 >>>>>>> 5ed110b345cdaf264c30a9fd76d32ef202985ecd
 
@@ -92,6 +112,24 @@ const RealTime = () => {
   };
 
   return (
+<<<<<<< HEAD
+    <Box p={4}>
+      <Heading mb={4}>Real-Time Data</Heading>
+      {loading ? (
+        <VStack spacing={4}>
+          <Spinner size="xl" />
+          <Text>Loading real-time data...</Text>
+        </VStack>
+      ) : error ? (
+        <Alert status="error">
+          <AlertIcon />
+          {error}
+        </Alert>
+      ) : (
+        <Text>Display real-time data here.</Text>
+      )}
+    </Box>
+=======
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Box p={4}>
         <Heading mb={4}>Real-Time Data</Heading>
@@ -116,6 +154,7 @@ const RealTime = () => {
         )}
       </Box>
     </ErrorBoundary>
+>>>>>>> main
   );
 };
 

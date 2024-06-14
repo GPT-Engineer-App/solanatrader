@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { Container, Text, VStack, Button, Box } from "@chakra-ui/react";
+=======
 import { Container, Text, VStack, Button, Box, Heading } from "@chakra-ui/react";
+>>>>>>> main
 import { Link as RouterLink } from "react-router-dom";
 
 const Index = () => {
@@ -11,6 +15,18 @@ const Index = () => {
       display="flex"
       justifyContent="center"
       alignItems="center"
+<<<<<<< HEAD
+    >
+      <Container centerContent maxW="container.md" bg="rgba(255, 255, 255, 0.8)" p={8} borderRadius="md">
+      <VStack spacing={4}>
+        <Text fontSize="2xl" fontWeight="bold">Welcome to the Solana Meme Coin Trading Bot</Text>
+        <Text textAlign="center">Navigate through the dashboard, set your trading parameters, and monitor real-time data.</Text>
+        <Button as={RouterLink} to="/dashboard" colorScheme="teal" size="lg" mt={4}>
+          Go to Dashboard
+        </Button>
+      </VStack>
+    </Container>
+=======
       position="relative"
     >
       <Box position="absolute" top="0" left="0" right="0" bottom="0" bg="rgba(0, 0, 0, 0.5)" />
@@ -27,6 +43,7 @@ const Index = () => {
           </Button>
         </VStack>
       </Container>
+>>>>>>> main
     </Box>
   );
 };
